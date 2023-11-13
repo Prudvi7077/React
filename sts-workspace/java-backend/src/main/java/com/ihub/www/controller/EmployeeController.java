@@ -20,34 +20,52 @@ import com.ihub.www.service.EmployeeService;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/api/v1")
-public class EmployeeController {
+@RequestMapping("/api/v1/")
+public class EmployeeController 
+{
 	@Autowired
 	EmployeeService employeeService;
+	
 	@GetMapping("/employees")
 	public List<Employee> getAllEmployees()
 	{
 		return employeeService.getAllEmployees();
 	}
+	
 	@PostMapping("/employees")
 	public Employee createEmployee(@RequestBody Employee employee)
 	{
 		return employeeService.createEmployee(employee);
 	}
+	
+
 	@GetMapping("/employees/{id}")
 	public Employee getEmployeeById(@PathVariable Long id)
 	{
 		return employeeService.getEmployeeById(id);
 	}
+	
 	@PutMapping("/employees/{id}")
 	public ResponseEntity<Employee> updateEmployee(@PathVariable Long id,@RequestBody Employee employee)
 	{
 		return employeeService.updateEmployee(id,employee);
 	}
+	
 	@DeleteMapping("/employees/{id}")
 	public ResponseEntity<HttpStatus> deleteEmployee(@PathVariable long id)
 	{
 		return employeeService.deleteEmployee(id);
+		
 	}
-
 }
+
+
+
+
+
+
+
+
+
+
+
